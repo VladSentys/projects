@@ -1,0 +1,50 @@
+@media print {
+    header nav ul {
+        display: none;
+    }
+    section h2 {
+        font-size: 20px;
+    }
+    section img {
+        max-width: 50%;
+    }
+    table {
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 400px) {
+    
+    header h1 {
+        animation: none;
+    }
+   
+    section p {
+        font-size: 14px;
+    }
+    
+    nav {
+        display: none;
+    }
+   
+    .portfolio {
+        order: -1; 
+    }
+}
+@media screen and (min-width: 1200px) {
+
+    h1, h2 {
+        font-size: 36px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    .main-image {
+        max-width: 800px;
+    }
+    
+    nav ul {
+        padding: 5px;
+    }
+}

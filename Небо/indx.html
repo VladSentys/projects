@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Game</title>
+  <style>
+    body {
+      background: url('https://www.nasa.gov/sites/default/files/thumbnails/image/pia23623-16.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+    #startButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 20px;
+    }
+    #spaceship {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Space Game!</h1>
+  <button id="startButton">Start</button>
+  <div>
+    <img id="spaceship" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/SpaceX_Dragon_2.png" alt="Spaceship" width="200">
+  </div>
+
+  <style>
+
+ body {
+    background-color: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+ }
+
+
+
+
+
+
+  </style>
+
+  <script>
+    let shots = 5;
+    const initialShots = 5;
+
+    document.getElementById('startButton').addEventListener('click', function() {
+      alert('Game Started! Use arrow keys to navigate and space to shoot.');
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'ArrowRight') {
+          alert('Натиснута стрілка вправо');
+        } else if (event.key === 'ArrowLeft') {
+          alert('Натиснута стрілка вліво');
+        } else if (event.key === 'ArrowLeft') {
+          alert('Натиснута стрілка вліво');
+        } else if (event.key === ' ') {
+          if (shots > 0) {
+            shots--;
+            alert('Залишилося пострілів: ' + shots);
+            if (shots === 0) {
+              alert('Пострілів більше не залишилося');
+            }
+          }
+        } else if (event.key === 'q' || event.key === 'Q') {
+          if (shots > 0) {
+            alert('Перезарядження не потрібне');
+          } else {
+            shots = initialShots;
+            alert('Бластер перезаряджено. Кількість пострілів: ' + shots);
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

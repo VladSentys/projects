@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Друга сторінка</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        .content {
+            text-align: center;
+        }
+        .animated-text {
+            animation: swing 2s infinite;
+        }
+        @keyframes swing {
+            0% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+            100% { transform: rotate(-3deg); }
+        }
+        .hidden-image {
+           visibility: hidden;
+        }
+        .show-image:hover ~ .hidden-image {
+            visibility: visible;
+            animation: rotate 2s infinite linear;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p class="animated-text">Текст з анімацією похитування.</p>
+        <p class="show-image">Наведіть курсор на текст, щоб побачити анімоване зображення.</p>
+        <img src="https://bookmints.com.ua/storage/projects/27/f4a6c042151171f21038638f96ff26ffc2a63633.png" alt="Зображення" class="hidden-image">
+        <a href="indx.html">Вернутися назад</a>
+    </div>
+</body>
+</html>

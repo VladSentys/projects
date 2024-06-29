@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мінісайт з таємним посиланням</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(137, 4, 245, 0.9), rgba(255, 255, 255, 0.9)), linear-gradient(#ffcccc, #ff6666);
+        }
+
+        p {
+            margin: 20px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        #secret-link {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Привіт! Ласкаво просимо на наш мінісайт з таємним прихованим посиланням.</p>
+        <p>Хто найкращий веброзробник?</p>
+        <p>Вітаємо! Ви найкращий веброзробник! Ось <a href="sekret.html" id="secret-link">таємне посилання</a>.</p>
+    </div>
+
+    <script>
+        // Показуємо таємне посилання після відповіді на запитання
+        document.getElementById("secret-link").style.display = "inline";
+    </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Web Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #gameArea {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 2px solid #fff;
+        }
+        #player {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #00f;
+        }
+        #target {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #f00;
+            top: 400px;
+            left: 400px;
+        }
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        #timer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameArea">
+        <div id="player" style="top: 0; left: 0;"></div>
+        <div id="target"></div>
+        <button id="startButton">Start</button>
+        <div id="timer">10</div>
+    </div>
+
+    <script>
+        let player, target, startButton, timerElement, gameArea;
+        let gameInterval, countdownInterval;
+        let timeLeft = 10;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            player = document.getElementById("player");
+            target = document.getElementById("target");
+            startButton = document.getElementById("startButton");
+            timerElement = document.getElementById("timer");
+            gameArea = document.getElementById("gameArea");
+
+            startButton.addEventListener("click", startGame);
+        });
+
+        function startGame() {
+            startButton.style.display = "none";
+            timeLeft = 10;
+            timerElement.textContent = timeLeft;
+            countdownInterval = setInterval(countdown, 1000);
+            gameInterval = setInterval(gameLoop, 16);
+            document.addEventListener("keydown", movePlayer);
+        }
+
+        function countdown() {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                clearInterval(gameInterval);
+                alert("Time's up! You lost.");
+                resetGame();
+            }
+        }
+
+        function movePlayer(event) {
+            const step = 10;
+            let top = parseInt(player.style.top);
+            let left = parseInt(player.style.left);
+
+            switch(event.key) {
+                case "ArrowUp":
+                    player.style.top = Math.max(0, top - step) + "px";
+                    break;
+                case "ArrowDown":
+                    player.style.top = Math.min(gameArea.clientHeight - player.clientHeight, top + step) + "px";
+                    break;
+                case "ArrowLeft":
+                    player.style.left = Math.max(0, left - step) + "px";
+                    break;
+                case "ArrowRight":
+                    player.style.left = Math.min(gameArea.clientWidth - player.clientWidth, left + step) + "px";
+                    break;
+            }
+
+            if (checkCollision(player, target)) {
+                clearInterval(countdownInterval);
+                clearInterval(gameInterval);
+                alert("You won!");
+                resetGame();
+            }
+        }
+
+function checkCollision(player, target) {
+            const playerRect = player.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            return !(
+                playerRect.top > targetRect.bottom ||
+                playerRect.bottom < targetRect.top ||
+                playerRect.right < targetRect.left ||
+                playerRect.left > targetRect.right
+            );
+        }
+
+        function resetGame() {
+            startButton.style.display = "block";
+            player.style.top = "0px";
+            player.style.left = "0px";
+            document.removeEventListener("keydown", movePlayer);
+        }
+
+        function gameLoop() {
+            // Placeholder for any game loop logic (not necessary for this simple game)
+        }
+    </script>
+</body>
+</html>

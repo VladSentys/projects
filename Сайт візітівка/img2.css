@@ -1,0 +1,15 @@
+@media (orientation: portrait) {
+    header {
+        padding: 20px 0;
+    }
+    section {
+        padding: 50px 0;
+    }
+    section h2 {
+        font-size: 20px;
+    }
+    section p {
+        font-size: 16px; 
+    }
+}
+ 

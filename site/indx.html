@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таємний мінісайт</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        p {
+            margin: 10px;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            width: 80%;
+            text-align: center;
+        }
+        #first-paragraph {
+            background: linear-gradient(to bottom, #ffcccc, #ff9999);
+            font-size: 20px;
+            color: #333;
+        }
+        #second-paragraph {
+            background: linear-gradient(to bottom, #99ff99, #66cc66);
+            font-size: 24px;
+            color: #333;
+            animation: blink-animation 1s infinite alternate;
+        }
+        @keyframes blink-animation {
+            from { opacity: 1; }
+            to { opacity: 0.5; }
+        }
+        #third-paragraph {
+            background: linear-gradient(to bottom, #9999ff, #6666cc);
+            font-size: 20px;
+            color: rgba(0, 0, 0, 0);
+        }
+        #third-paragraph a {
+            color: rgba(0, 0, 0, 1);
+            text-decoration: none;
+            transition: opacity 0.5s;
+        }
+        #second-paragraph:hover + #third-paragraph a {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<p id="first-paragraph">Привіт! На цій сторінці є таємне посилання.</p>
+        <div id="second-paragraph">Хто найкращий веброзробник?</div>
+        <p id="third-paragraph"><a href="second_page.html">Найкращим веброзробником є відвідувач нашого сайту.</a></p>
+    </div>
+</body>
+</html>
